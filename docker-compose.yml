@@ -1,0 +1,21 @@
+services:
+  student-service:
+    image: student-service
+    depends_on:
+      - postgresql
+    ports:
+      - "8080:8080"
+    networks:
+      - ps
+  postgresql:
+    image: postgres:16.3-alpine
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_DB=StudentAuthRepository
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    networks:
+      - ps
+networks:
+  ps:
