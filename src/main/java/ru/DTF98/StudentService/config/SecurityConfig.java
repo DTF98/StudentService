@@ -35,7 +35,6 @@ import ru.DTF98.StudentService.service.JpaUserDetailsService;
 @EnableMethodSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
-    private static final Logger log = LoggerFactory.getLogger(SecurityConfig.class);
     private final RsaKeyConfigProperties rsaKeyConfigProperties;
     private final JpaUserDetailsService userDetailsService;
 

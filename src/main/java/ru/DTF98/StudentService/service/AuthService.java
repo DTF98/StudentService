@@ -40,7 +40,7 @@ public class AuthService {
                 .subject(authentication.getName())
                 .claim("scope", scope)
                 .build();
-        log.info("Сгенерирован токен доступа");
+        log.info("Сгенерирован токен доступа для {}", authentication.getName());
         return jwtEncoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
     }
 

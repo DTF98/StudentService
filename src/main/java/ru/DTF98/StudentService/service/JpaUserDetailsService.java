@@ -1,5 +1,6 @@
 package ru.DTF98.StudentService.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -9,10 +10,9 @@ import ru.DTF98.StudentService.model.AuthUser;
 import ru.DTF98.StudentService.repository.UserRepository;
 
 @Service
+@RequiredArgsConstructor
 public class JpaUserDetailsService implements UserDetailsService {
-
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

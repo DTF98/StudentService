@@ -16,25 +16,21 @@ public class StudentController {
 
     @GetMapping("/{id}")
     public OutputStudentDTO getById(@PathVariable Long id) {
-        log.info("Запрос на получение студента по id = {}", id);
         return service.getById(id);
     }
 
     @PostMapping
     public OutputStudentDTO update(@RequestBody InputStudentDTO inputDto) {
-        log.info("Запрос на обновление студента по id = {}", inputDto.id());
         return service.update(inputDto);
     }
 
     @PutMapping
     public OutputStudentDTO create(@RequestBody InputStudentDTO inputDto) {
-        log.info("Запрос на создание студента {}", inputDto.toString());
         return service.create(inputDto);
     }
 
     @DeleteMapping("/{id}")
     public OutputStudentDTO delete(@PathVariable Long id) {
-        log.info("Запрос на удаление студента по id = {}", id);
         return service.delete(id);
     }
 }

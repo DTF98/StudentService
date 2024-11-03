@@ -8,11 +8,11 @@ import lombok.NonNull;
 public class InputRegisterDTO {
 
     @NonNull
-    String username;
+    private String username;
 
     @NonNull
-    String password;
+    private String password;
 
     @NonNull
-    String email;
+    private String email;
 }

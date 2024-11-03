@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.DTF98.StudentService.dto.AuthDTO;
+import ru.DTF98.StudentService.dto.AuthLoginRequest;
+import ru.DTF98.StudentService.dto.AuthResponse;
 import ru.DTF98.StudentService.dto.InputRegisterDTO;
 import ru.DTF98.StudentService.model.AuthUser;
 import ru.DTF98.StudentService.model.User;
@@ -29,13 +30,12 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody InputRegisterDTO inputRegisterDto) {
-        log.info("Запрос на регистрацию пользователя {}", inputRegisterDto.toString());
         User newUser = authService.registerUser(new User(inputRegisterDto.getUsername(),
                 inputRegisterDto.getEmail(), inputRegisterDto.getPassword()));
         return ResponseEntity.ok(newUser);
     }
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody AuthDTO.LoginRequest userLogin) throws IllegalAccessException {
+    public ResponseEntity<?> login(@RequestBody AuthLoginRequest userLogin) throws IllegalAccessException {
         Authentication authentication =
                 authenticationManager
                         .authenticate(new UsernamePasswordAuthenticationToken(
@@ -43,13 +43,9 @@ public class AuthController {
                                 userLogin.password()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        AuthUser userDetails = (AuthUser) authentication.getPrincipal();
-
-
-        log.info("Запрос на получение токена доступа для пользователя :{}", authentication.getAuthorities().toString());
         String token = authService.generateToken(authentication);
 
-        AuthDTO.Response response = new AuthDTO.Response("User logged in successfully", token);
+        AuthResponse response = new AuthResponse("User logged in successfully", token);
 
         return ResponseEntity.ok(response);
     }

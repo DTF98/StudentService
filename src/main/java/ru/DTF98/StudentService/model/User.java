@@ -8,15 +8,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "users", uniqueConstraints = {
-        @UniqueConstraint(columnNames = "user_name"),
-        @UniqueConstraint(columnNames = "email")
-})
+@Table(name = "users")
 @NoArgsConstructor
 public class User {
 
-    @Setter
-    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(unique = true)
@@ -64,7 +59,6 @@ public class User {
                 "userId='" + userId + '\'' +
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
                 '}';
     }
 }
