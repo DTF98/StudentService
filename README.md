@@ -18,7 +18,7 @@ A service for CRUD operations available to authorized users via JWT
     * `docker build -t student-service . && docker compose up`
 
 To test the application, you can use:    
-* There are no collections of queries in Postman, they are located in the directory ./StudentService.postman_collection.json;  
+* A ready-made collection of requests in Postman, they are located in the directory ./StudentService.postman_collection.json;  
 * Using CURL queries.
 
 ♦ CURL requests:
