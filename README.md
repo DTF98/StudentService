@@ -45,7 +45,7 @@ To test the application, you can use:
 3. Adding information about a new student:
     * curl -X PUT "http://localhost:8080/api/resource"  
     -H "Content-Type: application/json"  
-    -H "Authorization: bearer token "our TOKEN"   -d  
+    -H "Authorization: bearer token $ourToken"   -d  
     '{  
     "firstName": "student_first_name",  
     "lastName": "student_second_name",  
@@ -55,11 +55,11 @@ To test the application, you can use:
 }'
 4. Getting information about a student by id:
     * curl -X GET "http://localhost:8080/api/resource/{id}"  
-    -H "Authorization: bearer token "our TOKEN"
+    -H "Authorization: bearer token $ourToken"
 5. Updating student information by id:
     * curl -X POST "http://localhost:8080/api/resource"  
     -H "Content-Type: application/json"  
-    -H "Authorization: bearer token "our TOKEN""   -d  
+    -H "Authorization: bearer token $ourToken"   -d  
     '{  
     "id":  "user_id",  
     "firstName": "user_firstName",  
@@ -70,5 +70,5 @@ To test the application, you can use:
 }'
 6. Deleting information about a student by id:
     * curl -X DELETE "http://localhost:8080/api/resource/{id}"  
-    -H "Authorization: bearer token "our TOKEN" 
+    -H "Authorization: bearer token $ourToken" 
 
